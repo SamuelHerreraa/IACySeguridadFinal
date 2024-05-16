@@ -1,0 +1,23 @@
+---
+- name: Modify index.html
+  hosts: localhost
+  tasks:
+    - name: Ensure index.html exists
+      command: docker exec nginx_container bash -c "echo 'Welcome to NGINX' > /usr/share/nginx/html/index.html"
+    
+    - name: Modify index.html
+      command: >
+        docker exec nginx_container bash -c "echo '
+        <img src=\"https://mir-s3-cdn-cf.behance.net/projects/404/9cb7b0131927235.Y3JvcCw4MDksNjMyLDAsODg.png\">
+        <h2>Alumno: Samuel Rojano Herrera</h2>
+        <h2>Matricula: 2679928</h2>
+        <h2>Materia: DevOps Avanzado (laC y seguridad)</h2>
+        <h2>Profesor: Francisco Javier Rodriguez Gonzalez</h2>' > /usr/share/nginx/html/index.html"
+      
+    - name: Display the contents of index.html
+      command: docker exec nginx_container cat /usr/share/nginx/html/index.html
+      register: index_html_contents
+
+    - name: Show the contents of index.html
+      debug:
+        msg: "{{ index_html_contents.stdout }}"
