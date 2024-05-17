@@ -1,4 +1,4 @@
-# Proyecto FINAL: Implementación de Apache Guacamole y Nginx con Terraform y Ansible
+# Proyecto FINAL
 
 Este proyecto demuestra la implementación de contenedores Docker utilizando Terraform y la configuración de un archivo HTML en un servidor Nginx utilizando Ansible.
 
